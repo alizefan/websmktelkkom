@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+body {
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.dashboard-container {
+    background-color: #fff;
+    width: 100%;
+    max-width: 900px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #4a69bd;
+    color: #fff;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.logout-btn {
+    color: #fff;
+    text-decoration: none;
+    background-color: #e74c3c;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
+}
+
+.form-card {
+    background-color: #f7f7f7;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.form-card label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-card input[type="text"],
+.form-card input[type="date"],
+.form-card select,
+
+.form-card textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    transition: border-color 0.3s ease;
+}
+
+.form-card input[type="text"]:focus,
+.form-card input[type="date"]:focus,
+.form-card select:focus,
+.form-card textarea:focus {
+    border-color: #4a69bd;
+    outline: none;
+}
+
+.btn-primary {
+    background-color: #4a69bd;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #3b5284;
+}
+
+.event-list {
+    padding: 20px;
+}
+
+.event-list h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.event-list ul {
+    list-style-type: none;
+}
+
+.event-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.event-details {
+    max-width: 70%;
+}
+
+.event-item strong {
+    font-weight: 700;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+@media (max-width: 768px) {
+    .event-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .event-details {
+        max-width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+    </style>
+
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h2>Admin Dashboard</h2>
+            <a href="{{ url_for('logout') }}" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </header>
+
+        <!-- Form to update programs -->
+        <form action="{{ url_for('update_program') }}" method="POST" class="form-card">
+            <h3>Update Program</h3>
+            <label for="program">Program:</label>
+            <select id="program" name="program">
+                {% for program in programs %}
+                <option value="{{ program }}">{{ program.replace('-', ' ').title() }}</option>
+                {% endfor %}
+            </select>
+            <label for="details">Details:</label>
+            <textarea id="details" name="details" rows="10" cols="50"></textarea>
+            <button type="submit" class="btn-primary">Update Program</button>
+        </form>
+
+        <!-- Form Gabungan untuk Mengubah Gambar -->
+<form action="{{ url_for('upload_image') }}" method="POST" class="form-card" enctype="multipart/form-data">
+    <h3>Upload New Image</h3>
+    
+    <!-- Dropdown untuk Memilih Gambar -->
+    <label for="image_type">Choose an image to update:</label>
+    <select id="image_type" name="image_type" required>
+        <option value="logo">Logo</option>
+        <option value="orang">School Image</option>
+        <option value="visi-misi">visi-misi</option>
+        <option value="about">School Image</option>
+        <!-- Tambahkan opsi lain di sini jika ada gambar lain -->
+    </select>
+    
+    <!-- Input File -->
+    <label for="image">Choose a file:</label>
+    <input type="file" id="image" name="image" accept="image/*" required>
+    
+    <!-- Tombol Submit -->
+    <button type="submit" class="btn-primary">Upload Image</button>
+</form>
+
+        
+
+        <!-- Form to add new events -->
+        <form action="{{ url_for('admin_dashboard') }}" method="POST" class="form-card" style="margin-top: 20px;">
+            <h3>Tambah Acara Baru</h3>
+            <label for="event_title">Judul Acara:</label>
+            <input type="text" id="event_title" name="event_title" required>
+            <label for="event_date">Tanggal:</label>
+            <input type="date" id="event_date" name="event_date" required>
+            <label for="event_description">Deskripsi:</label>
+            <textarea id="event_description" name="event_description" rows="5" cols="50" required></textarea>
+            <button type="submit" class="btn-primary">Tambah Acara</button>
+        </form>
+
+        <div class="event-list">
+            <h3>Daftar Acara</h3>
+            <ul>
+                {% for event in events %}
+                <li class="event-item">
+                    <div class="event-details">
+                        <strong>{{ event.title }}</strong> - {{ event.date }}<br>
+                        <p>{{ event.description }}</p>
+                    </div>
+                    <form action="{{ url_for('delete_event', event_index=loop.index0) }}" method="POST">
+                        <button type="submit" class="btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus acara ini?');">Hapus</button>
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

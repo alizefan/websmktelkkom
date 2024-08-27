@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMK TELEKOMUNIKASI TELESANDI BEKASI</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='css/images/tels.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Header with Navigation -->
+    <header>
+        <div class="navbar">
+            <img src="{{ url_for('static', filename='css/images/logo.png') }}" alt="Company Logo" class="logo">
+            <nav>
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">Visi & Misi</a>
+                <a href="#tentang" class="nav-link">Tentang Kami</a>
+                <a href="#jurusan" class="nav-link">Jurusan</a>
+                <!-- <a href="#events" class="nav-link">Acara</a> -->
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="header-section">
+        <div class="header-image-container">
+            <img src="{{ url_for('static', filename='css/images/orang.png') }}" alt="Gambar Sekolah"
+                class="header-image">
+        </div>
+        <div class="header-text">
+            <h2>SMK TELEKOMUNIKASI <span class="sub-text">TELESANDI BEKASI</span></h2>
+            <p>"Kami Bukan yang Terbaik, Tapi Kami Ingin Menjadi yang Terbaik"</p>
+        </div>
+    </section>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!-- Visi & Misi Section -->
+    <section id="about" class="vision-mission">
+        <div class="text-container">
+            <h2>VISI & MISI</h2>
+            <p class="vision">VISI :</p>
+            <p class="vision-text">
+                Menjadi Sekolah bermutu unggul dalam ilmu pengetahuan dan <br>
+                teknologi informasi berdasarkan IMTAQ serta berkarakter bangsa.
+            </p>
+            <p class="mission">MISI :</p>
+            <ul class="mission-list">
+                <li>Menyelenggarakan pendidikan siswa/siswi di bidang:</li>
+                <li>Teknologi Telekomunikasi dan Informasi.</li>
+                <li>Mengembangkan suasana akademis yang mendukung kebutuhan pengguna lulusan.</li>
+                <li>Pemberdayaan laboratorium bahasa dan komputer untuk menunjang siswa mempunyai skill memadai.</li>
+                <li>Mengembangkan kurikulum sesuai kompetensi yang diharapkan oleh pengguna lulusan Segala aktifitas
+                    dilandasi nilai-nilai agama.</li>
+            </ul>
+        </div>
+        <img src="{{ url_for('static', filename='css/images/visi-misi.png') }}" alt="Vision and Mission Image"
+            class="header-image">
+    </section>
+
+    <!-- Tentang Kami Section -->
+    <section id="tentang" class="about-section">
+        <div class="about-content">
+            <h2>SMK TELEKOMUNIKASI TELESANDI BEKASI</h2>
+            <p>SMK Telekomunikasi Telesandi Bekasi adalah salah satu sekolah menengah kejuruan di bidang teknologi
+                informasi dan telekomunikasi di Kabupaten Bekasi. SMK Telekomunikasi Telesandi Bekasi merupakan salah
+                satu Sekolah Standar Nasional (SSN).</p>
+
+            <p>SMK Telekomunikasi Telesandi Bekasi (TELS) merupakan sekolah yang didirikan dengan dilatarbelakangi oleh
+                keinginan untuk meningkatkan kualitas pendidikan di bidang Teknologi di wilayah Bekasi, yang pada saat
+                itu belum tersedia sekolah kejuruan bidang teknologi informasi dan telekomunikasi. SMK Telekomunikasi
+                Telesandi Bekasi berdiri pada tanggal 2008 dengan Akreditasi “A”. SMK Telekomunikasi Telesandi Bekasi
+                berada dibawah naungan Yayasan Global Jaya Mandiri.</p>
+        </div>
+        <div class="about-image">
+            <img src="{{ url_for('static', filename='css/images/about.png') }}" alt="Gambar Sekolah">
+        </div>
+    </section>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!-- Jurusan Section -->
+    <section id="jurusan" class="jurusan-section">
+        <div class="container">
+            <div class="content">
+                <h3>Paket Keahlian</h3>
+                <div id="package-details">
+                    <!-- Package details will be inserted here -->
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <h3>Jurusan-jurusan di Telesandi</h3>
+                <ul id="program-list">
+                    <li data-program="rekayasa-perangkat-lunak">Rekayasa Perangkat Lunak</li>
+                    <li data-program="teknik-komputer-dan-jaringan">Teknik Komputer dan Jaringan</li>
+                    <li data-program="multimedia">Multimedia</li>
+                    <li data-program="teknik-transmisi-telekomunikasi">Teknik Transmisi Telekomunikasi</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!-- Events Section
+    <section id="events" class="events-section">
+        <div class="events-container">
+            <h2>Acara Sekolah</h2>
+            <ul class="events-list">
+                {% for event in events %}
+                <li>
+                    <h3>{{ event.title }}</h3>
+                    <p><strong>Date:</strong> {{ event.date }}</p>
+                    <p>{{ event.description }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section> -->
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-container">
+            <div class="school-info">
+                <h2>SMK TELEKOMUNIKASI<br>TELESANDI BEKASI</h2>
+                <p>
+                    SMK Telekomunikasi Telesandi Bekasi adalah salah satu sekolah menengah kejuruan di bidang teknologi
+                    informasi dan telekomunikasi di Kabupaten Bekasi. SMK Telekomunikasi Telesandi Bekasi merupakan
+                    salah satu Sekolah Standar Nasional (SSN).
+                </p>
+            </div>
+
+            <div class="contact-info">
+                <h3>Kontak Kami</h3>
+                <p>Mekarsari Raya Jl. KH. Mochammad, Tambun Selatan Bekasi, Indonesia.</p>
+                <p>📞 (+62)21 88332404 (Telp)</p>
+                <p>📠 (021) 88323429 (Fax)</p>
+                <p>📱 (+62)812-9069-2005 (WA)</p>
+            </div>
+
+            <div class="social-media">
+                <h3>Sosial Media</h3>
+                <div class="social-icons">
+                    <a href="#"><img src="{{ url_for('static', filename='css/images/fb.png') }}" alt="Facebook"></a>
+                    <a href="#"><img src="{{ url_for('static', filename='css/images/ins.png') }}" alt="Instagram"></a>
+                    <a href="#"><img src="{{ url_for('static', filename='css/images/yt.png') }}" alt="YouTube"></a>
+                </div>
+            </div>
+
+            <div class="email">
+                <h3>Email</h3>
+                <p>✉️ telesandismk@gmail.com</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery for Package Details -->
+    <script>
+        $(document).ready(function () {
+            $('#program-list li').click(function () {
+                // Remove 'active' class from all list items
+                $('#program-list li').removeClass('active');
+                // Add 'active' class to the clicked list item
+                $(this).addClass('active');
+
+                var programId = $(this).data('program');
+
+                // Fetch the package information
+                $.getJSON('/get_package/' + programId, function (data) {
+                    var detailsHtml = '<ul>';
+                    data.forEach(function (item) {
+                        detailsHtml += '<li>' + item + '</li>';
+                    });
+                    detailsHtml += '</ul>';
+                    $('#package-details').html(detailsHtml);
+                });
+            });
+        });
+    </script>
+    <!-- Script for Active Navbar Links -->
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            function setActiveNav() {
+                let current = '';
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.pageYOffset >= sectionTop - sectionHeight / 3) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', setActiveNav);
+            setActiveNav(); // Set active on page load
+        });
+
+            
+        
+    </script>
+
+</body>
+
+</html>
